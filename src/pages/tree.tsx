@@ -9,7 +9,7 @@ import Link from "next/link";
 const TreePage: React.FC = () => {
     return (
         <Layout title="Tree Visualization Service - StackXpression">
-            <div className="container mx-auto px-4 py-6 sm:py-8 max-w-7xl">
+            <div className="container mx-auto px-4 py-6 sm:py-8">
                 
                 {/* Elegant Page Header */}
                 <div className="text-center mb-8 sm:mb-12">
@@ -39,71 +39,20 @@ const TreePage: React.FC = () => {
                     <div className="flex flex-col sm:flex-row justify-center gap-3">
                         <Link href="/">
                             <button className="px-6 py-3 bg-white hover:bg-gray-50 border-2 border-gray-300 hover:border-gray-400 text-gray-700 hover:text-gray-900 rounded-2xl font-semibold transition-all duration-300 shadow-md hover:shadow-lg">
-                                ← Back
+                                Back
                             </button>
                         </Link>
                         <Link href="/stack">
-                            <button className="px-6 py-3 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300">
-                                Stack Service →
+                            <button className="px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-2xl font-semibold shadow-sm hover:shadow-md transition-all duration-200">
+                                Stack
                             </button>
                         </Link>
                     </div>
                 </div>
 
-                {/* Beautiful Layout: Visualizer centered, info on sides */}
-                <div className="grid lg:grid-cols-12 gap-6 mb-12">
-                    
-                    {/* Left Sidebar - Information */}
-                    <div className="lg:col-span-4">
-                        <div className="sticky top-8 space-y-6">
-                            <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-3xl border border-blue-100 shadow-xl p-6">
-                                <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
-                                    <span className="w-1 h-8 bg-gradient-to-b from-blue-500 to-purple-600 rounded-full mr-3"></span>
-                                    About Expression Trees
-                                </h2>
-                                <p className="text-sm text-gray-600 leading-relaxed">
-                                    Expression trees are binary trees where parent nodes are operators and child nodes are operands. They're fundamental to compiler design and mathematical expression parsing.
-                                </p>
-                            </div>
-
-                            <div className="bg-white rounded-2xl border border-gray-200 shadow-lg p-5">
-                                <h3 className="font-bold text-sm text-gray-900 mb-3">Traversal Types</h3>
-                                <div className="space-y-3">
-                                    <div className="bg-blue-50 rounded-xl p-3 border border-blue-200">
-                                        <div className="font-semibold text-blue-700 text-xs mb-1">PREORDER</div>
-                                        <div className="text-xs text-gray-600">Root → Left → Right</div>
-                                    </div>
-                                    <div className="bg-green-50 rounded-xl p-3 border border-green-200">
-                                        <div className="font-semibold text-green-700 text-xs mb-1">INORDER</div>
-                                        <div className="text-xs text-gray-600">Left → Root → Right</div>
-                                    </div>
-                                    <div className="bg-purple-50 rounded-xl p-3 border border-purple-200">
-                                        <div className="font-semibold text-purple-700 text-xs mb-1">POSTORDER</div>
-                                        <div className="text-xs text-gray-600">Left → Right → Root</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Center - Visualizer */}
-                    <div className="lg:col-span-8">
-                        <div className="bg-gradient-to-br from-white via-blue-50/30 to-purple-50/30 rounded-3xl border-2 border-blue-100 shadow-2xl p-6 md:p-8">
-                            
-                            {/* Visualizer Title */}
-                            <div className="mb-6 text-center">
-                                <h2 className="text-2xl sm:text-3xl font-bold mb-2 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                                    Interactive Tree Visualizer
-                                </h2>
-                                <p className="text-sm text-gray-500">
-                                    Explore binary expression trees in real-time
-                                </p>
-                            </div>
-                            
-                            {/* TreeVisualizer component - all logic preserved */}
-                            <TreeVisualizer initialExpression="8 2 3 * - 7 +" />
-                        </div>
-                    </div>
+                {/* Main content: full-width Tree Visualizer */}
+                <div className="w-full">
+                    <TreeVisualizer initialExpression="8 2 3 * - 7 +" />
                 </div>
             </div>
         </Layout>

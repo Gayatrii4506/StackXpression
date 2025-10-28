@@ -70,7 +70,7 @@ const Footer: React.FC = () => {
                         <p className="mt-2 text-sm sm:text-base">
                             <ExternalLink href="https://github.com/Gayatrii4506/StackXpression">
                                 <span className="text-green-600 hover:text-green-700 font-medium transition-colors duration-300">
-                                    View on GitHub →
+                                    View on GitHub
                                 </span>
                             </ExternalLink>
                         </p>

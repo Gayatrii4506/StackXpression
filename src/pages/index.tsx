@@ -33,7 +33,7 @@ const Home: React.FC = () => {
                 <div className="container mx-auto text-center">
                     <div className="max-w-4xl mx-auto">
                         <h1 className="text-5xl md:text-6xl font-bold mb-6 text-gray-900">
-                            Professional Mathematical <span className="text-green-600">Notation Services</span>
+                            Professional Mathematical <span className="text-green-600">Notation</span>
                         </h1>
                         <p className="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed">
                             Enterprise-grade visualization solutions for mathematical notation conversion and evaluation
@@ -41,12 +41,12 @@ const Home: React.FC = () => {
                         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                             <Link href="/tree" className="w-full sm:w-auto">
                                 <button className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-green-600 to-emerald-700 hover:from-green-700 hover:to-emerald-800 text-white rounded-xl font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-green-500/25">
-                                    Tree Visualization Service
+                                    Tree Visualization
                                 </button>
                             </Link>
                             <Link href="/stack" className="w-full sm:w-auto">
                                 <button className="w-full sm:w-auto px-8 py-4 bg-white hover:bg-gray-50 border-2 border-green-600 hover:border-green-700 text-green-600 hover:text-green-700 rounded-xl font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
-                                    Stack Analysis Service
+                                    Stack Analysis
                                 </button>
                             </Link>
                         </div>
@@ -58,13 +58,13 @@ const Home: React.FC = () => {
             <section className="py-16 px-4">
                 <div className="container mx-auto">
                     <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900">
-                        Our Professional Services
+                        Our Professional Tools
                     </h2>
                     <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
                         Comprehensive mathematical notation solutions designed for educational institutions and enterprise clients
                     </p>
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                        {/* Tree Visualization Service */}
+                        {/* Tree Visualization */}
                         <div className="bg-white p-8 rounded-2xl border border-gray-200 hover:border-green-300 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
                             <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center mb-6">
                                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -77,12 +77,12 @@ const Home: React.FC = () => {
                             </p>
                             <Link href="/tree" className="block w-full">
                                 <button className="w-full py-3 bg-green-50 hover:bg-green-100 border border-green-200 hover:border-green-300 rounded-lg transition-all duration-200 text-green-700 font-medium">
-                                    Access Service →
+                                    Access Tool
                                 </button>
                             </Link>
                         </div>
 
-                        {/* Stack Analysis Service */}
+                        {/* Stack Analysis */}
                         <div className="bg-white p-8 rounded-2xl border border-gray-200 hover:border-emerald-300 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
                             <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-2xl flex items-center justify-center mb-6">
                                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -95,7 +95,7 @@ const Home: React.FC = () => {
                             </p>
                             <Link href="/stack" className="block w-full">
                                 <button className="w-full py-3 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 hover:border-emerald-300 rounded-lg transition-all duration-200 text-emerald-700 font-medium">
-                                    Access Service →
+                                    Access Tool
                                 </button>
                             </Link>
                         </div>
@@ -113,7 +113,7 @@ const Home: React.FC = () => {
                             </p>
                             <Link href="https://github.com/Gayatrii4506/StackXpression" className="block w-full">
                                 <button className="w-full py-3 bg-green-50 hover:bg-green-100 border border-green-200 hover:border-green-300 rounded-lg transition-all duration-200 text-green-700 font-medium">
-                                    Learn More →
+                                    Learn More
                                 </button>
                             </Link>
                         </div>
@@ -212,18 +212,18 @@ const Home: React.FC = () => {
             <section className="py-16 px-4">
                 <div className="container mx-auto">
                     <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900">
-                        Live Service Demonstrations
+                        Live Tool Demonstrations
                     </h2>
                     <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
                         Interactive demonstrations of our professional visualization services
                     </p>
                     <div className="space-y-16 max-w-6xl mx-auto">
                         <div className="bg-white p-8 rounded-3xl border border-gray-200 shadow-xl">
-                            <h3 className="text-2xl font-semibold mb-6 text-center text-green-600">Tree Visualization Service Demo</h3>
+                            <h3 className="text-2xl font-semibold mb-6 text-center text-green-600">Tree Visualization Demo</h3>
                             <TreeVisualizer initialExpression="8 2 3 * - 7 +" />
                         </div>
                         <div className="bg-white p-8 rounded-3xl border border-gray-200 shadow-xl">
-                            <h3 className="text-2xl font-semibold mb-6 text-center text-emerald-600">Stack Analysis Service Demo</h3>
+                            <h3 className="text-2xl font-semibold mb-6 text-center text-emerald-600">Stack Analysis Demo</h3>
                             <StackVisualizer
                                 initialPostfixExpression="8 2 3 * - 7 +"
                                 initialPrefixExpression="+ - 8 * 2 3 7"
@@ -233,49 +233,6 @@ const Home: React.FC = () => {
                 </div>
             </section>
 
-            {/* Additional Resources */}
-            <section className="py-16 px-4 bg-gray-50">
-                <div className="container mx-auto">
-                    <div className="max-w-4xl mx-auto">
-                        <TextPanel header="Additional Resources & Documentation">
-                            <div className="space-y-6">
-                                <div>
-                                    <p className="text-gray-600 mb-4">Educational video demonstration of our services:</p>
-                                    <div className="bg-gray-100 p-4 rounded-xl border border-gray-200">
-                                        <div className="aspect-w-16 aspect-h-9">
-                                            <iframe
-                                                src="https://www.youtube.com/embed/3RhLATMb7OI"
-                                                title="What is Prefix, Infix, Postfix Notation | Introductory Computer Science | StackXpression"
-                                                frameBorder="0"
-                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                                allowFullScreen
-                                                className="rounded-lg w-full h-64"
-                                            ></iframe>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <p className="text-gray-600 mb-3">
-                                        Technical reference materials and academic resources for mathematical notation systems:
-                                    </p>
-                                    <div className="bg-green-50 p-4 rounded-lg border border-green-200">
-                                        <ExternalLink href="https://sites.cs.ucsb.edu/~mikec/cs12/slides/week08c.pdf">
-                                            UCSB CS12 Mathematical Notation Reference Guide
-                                        </ExternalLink>
-                                    </div>
-                                </div>
-                                <div className="mt-6">
-                                    <Link href="https://github.com/Gayatrii4506/StackXpression" className="inline-block">
-                                        <button className="px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-all duration-200 font-medium">
-                                            View Project Documentation →
-                                        </button>
-                                    </Link>
-                                </div>
-                            </div>
-                        </TextPanel>
-                    </div>
-                </div>
-            </section>
         </Layout>
     );
 };

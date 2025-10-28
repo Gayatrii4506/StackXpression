@@ -327,86 +327,80 @@ stack should only have one item: answer`;
     };
 
     return (
-        <div className="w-full">
-            {/* Mode Toggle */}
-            <div className="mb-6">
-                <div className="bg-gradient-to-r from-slate-100 to-gray-100 rounded-2xl p-1.5 shadow-md border border-gray-200">
-                    <div className="grid grid-cols-2 gap-2">
-                        <button
-                            onClick={() => {
-                                if (!isAnimating) {
-                                    resetToExpression(true);
-                                }
-                            }}
-                            disabled={isAnimating}
-                            className={`relative px-6 py-3.5 rounded-xl font-bold text-sm transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed ${
-                                activeMode === 'postfix'
-                                    ? 'bg-gradient-to-r from-emerald-500 to-green-600 text-white shadow-lg scale-105'
-                                    : 'bg-white text-gray-700 hover:bg-gray-50'
-                            }`}
-                        >
-                            <div className="flex items-center justify-center gap-2">
-                                <span className="text-lg">→</span>
-                                <span>POSTFIX</span>
-                            </div>
-                            <div className="text-xs mt-0.5 opacity-80">Left to Right</div>
-                        </button>
-                        <button
-                            onClick={() => {
-                                if (!isAnimating) {
-                                    resetToExpression(false);
-                                }
-                            }}
-                            disabled={isAnimating}
-                            className={`relative px-6 py-3.5 rounded-xl font-bold text-sm transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed ${
-                                activeMode === 'prefix'
-                                    ? 'bg-gradient-to-r from-green-500 to-emerald-600 text-white shadow-lg scale-105'
-                                    : 'bg-white text-gray-700 hover:bg-gray-50'
-                            }`}
-                        >
-                            <div className="flex items-center justify-center gap-2">
-                                <span className="text-lg">←</span>
-                                <span>PREFIX</span>
-                            </div>
-                            <div className="text-xs mt-0.5 opacity-80">Right to Left</div>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            {/* Visualization Area */}
-            <div className="relative bg-gradient-to-br from-white via-emerald-50/40 to-green-50/40 rounded-3xl border-2 border-emerald-200/70 shadow-2xl overflow-hidden mb-6">
+        <div className="w-full max-w-[95vw] mx-auto space-y-8">
+            {/* Main Stack Visualizer Container */}
+            <div className="bg-gradient-to-br from-white via-emerald-50/40 to-green-50/40 rounded-3xl border-2 border-emerald-200/70 shadow-2xl overflow-hidden">
                 {/* Decorative Background */}
-                <div className="absolute inset-0 opacity-30">
-                    <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-emerald-300 to-green-400 rounded-full blur-3xl"></div>
-                    <div className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-green-300 to-emerald-400 rounded-full blur-3xl"></div>
+                <div className="absolute inset-0 opacity-20">
+                    <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-emerald-300 to-green-400 rounded-full blur-3xl"></div>
+                    <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-green-300 to-emerald-400 rounded-full blur-3xl"></div>
                 </div>
 
-                {/* Status Bar */}
-                <div className="relative bg-gradient-to-r from-emerald-500/10 to-green-500/10 backdrop-blur-sm border-b-2 border-emerald-200/50 px-6 py-4">
-                    <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-3">
-                            <div className={`w-3 h-3 rounded-full ${isAnimating ? 'bg-green-500 animate-pulse' : 'bg-gray-300'} shadow-lg`}></div>
-                            <span className="font-bold text-gray-700">
+                {/* Header with Mode Toggle and Status */}
+                <div className="relative bg-gradient-to-r from-emerald-500/10 to-green-500/10 backdrop-blur-sm border-b-2 border-emerald-200/50 px-8 py-6">
+                    <div className="flex items-center justify-between mb-4">
+                        <div className="flex items-center gap-4">
+                            <div className={`w-4 h-4 rounded-full ${isAnimating ? 'bg-green-500 animate-pulse' : 'bg-gray-300'} shadow-lg`}></div>
+                            <span className="font-bold text-gray-700 text-lg">
                                 {isAnimating ? 'Evaluating...' : 'Ready'}
                             </span>
                         </div>
-                        <div className="flex items-center gap-2 text-sm font-semibold text-gray-600">
-                            <span className="px-3 py-1 bg-white/60 rounded-lg border border-emerald-200">
-                                Mode: <span className="text-emerald-600">{activeMode.toUpperCase()}</span>
+                        <div className="flex items-center gap-3 text-sm font-semibold text-gray-600">
+                            <span className="px-4 py-2 bg-white/60 rounded-xl border border-emerald-200">
+                                Mode: <span className="text-emerald-600 font-bold">{activeMode.toUpperCase()}</span>
                             </span>
+                        </div>
+                    </div>
+                    
+                    {/* Mode Toggle */}
+                    <div className="bg-gradient-to-r from-slate-100 to-gray-100 rounded-xl p-1 shadow-lg border border-gray-200 max-w-md">
+                        <div className="grid grid-cols-2 gap-1">
+                            <button
+                                onClick={() => {
+                                    if (!isAnimating) {
+                                        resetToExpression(true);
+                                    }
+                                }}
+                                disabled={isAnimating}
+                                className={`relative px-6 py-3 rounded-lg font-semibold text-sm transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed ${
+                                    activeMode === 'postfix'
+                                        ? 'bg-emerald-600 text-white shadow-sm'
+                                        : 'bg-white text-gray-700 hover:bg-gray-50'
+                                }`}
+                            >
+                                <div className="flex items-center justify-center gap-2">
+                                    <span>POSTFIX</span>
+                                </div>
+                            </button>
+                            <button
+                                onClick={() => {
+                                    if (!isAnimating) {
+                                        resetToExpression(false);
+                                    }
+                                }}
+                                disabled={isAnimating}
+                                className={`relative px-6 py-3 rounded-lg font-semibold text-sm transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed ${
+                                    activeMode === 'prefix'
+                                        ? 'bg-green-600 text-white shadow-sm'
+                                        : 'bg-white text-gray-700 hover:bg-gray-50'
+                                }`}
+                            >
+                                <div className="flex items-center justify-center gap-2">
+                                    <span>PREFIX</span>
+                                </div>
+                            </button>
                         </div>
                     </div>
                 </div>
 
-                {/* Stack Visualization */}
-                <div className="relative h-[450px] p-6">
-                    <div className="flex h-full gap-4">
+                {/* Main Visualization Area */}
+                <div className="relative p-8">
+                    <div className="flex gap-8 h-[500px]">
                         {/* Input Queue */}
                         <div className="flex-1 flex flex-col">
-                            <div className="flex-1 bg-white/60 backdrop-blur-sm rounded-2xl border-2 border-emerald-200/50 shadow-lg overflow-hidden">
+                            <div className="flex-1 bg-white/70 backdrop-blur-sm rounded-2xl border-2 border-blue-200/50 shadow-lg overflow-hidden">
                                 <div className="h-full flex flex-col">
-                                    <div className="flex-1 overflow-y-auto">
+                                    <div className="flex-1 overflow-y-auto p-4">
                                         <VerticalList
                                             list={inputList}
                                             bottomElem={null}
@@ -414,9 +408,9 @@ stack should only have one item: answer`;
                                     </div>
                                 </div>
                             </div>
-                            <div className="mt-3 text-center">
-                                <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-xl font-bold text-sm shadow-lg">
-                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <div className="mt-4 text-center">
+                                <div className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-xl font-semibold text-sm shadow-sm">
+                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                                     </svg>
                                     Input Queue
@@ -426,42 +420,40 @@ stack should only have one item: answer`;
 
                         {/* Stack */}
                         <div className="flex-1 flex flex-col">
-                            <div className="flex-1 bg-white/60 backdrop-blur-sm rounded-2xl border-2 border-green-200/50 shadow-lg overflow-hidden">
+                            <div className="flex-1 bg-white/70 backdrop-blur-sm rounded-2xl border-2 border-green-200/50 shadow-lg overflow-hidden">
                                 <div className="h-full flex flex-col">
-                                    <div className="flex-1 overflow-y-auto">
+                                    <div className="flex-1 overflow-y-auto p-4">
                                         <VerticalList
                                             list={stackList}
                                             bottomElem={null}
                                         />
-                                    </div>
-                                </div>
+                    </div>
+                                        </div>
                             </div>
-                            <div className="mt-3 text-center">
-                                <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-emerald-500 to-green-600 text-white rounded-xl font-bold text-sm shadow-lg">
-                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <div className="mt-4 text-center">
+                                <div className="inline-flex items-center gap-2 px-6 py-3 bg-emerald-600 text-white rounded-xl font-semibold text-sm shadow-sm">
+                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                                     </svg>
                                     Stack (LIFO)
-                                </div>
+                                        </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            {/* Control Panel */}
-            <div className="space-y-4">
-                {/* Expression Inputs */}
-                <div className="grid md:grid-cols-2 gap-4">
-                    <div className="bg-white rounded-2xl border-2 border-gray-200 shadow-lg p-4">
-                        <div className="flex items-center gap-2 mb-3">
-                            <div className="w-8 h-8 bg-gradient-to-br from-emerald-500 to-green-600 rounded-lg flex items-center justify-center">
-                                <span className="text-white font-bold text-sm">→</span>
+                {/* Expression Input Controls */}
+                <div className="px-8 pb-8">
+                    <div className="grid md:grid-cols-2 gap-6">
+                        <div className="bg-white/80 backdrop-blur-sm rounded-2xl border-2 border-emerald-200/50 shadow-lg p-6">
+                            <div className="flex items-center gap-3 mb-4">
+                                <div className="w-10 h-10 bg-gradient-to-br from-emerald-500 to-green-600 rounded-xl flex items-center justify-center">
+                                    <span className="text-white font-bold text-sm">POST</span>
+                                </div>
+                                <span className="font-bold text-gray-700 text-lg">Postfix Expression</span>
                             </div>
-                            <span className="font-bold text-gray-700">Postfix Expression</span>
-                        </div>
                         <GenerateBar
-                            text="Evaluate"
+                                text="Evaluate"
                             onSubmit={(newVal) => {
                                 postfixExpression.current = newVal;
                                 resetToExpression(true);
@@ -471,15 +463,15 @@ stack should only have one item: answer`;
                         />
                     </div>
 
-                    <div className="bg-white rounded-2xl border-2 border-gray-200 shadow-lg p-4">
-                        <div className="flex items-center gap-2 mb-3">
-                            <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center">
-                                <span className="text-white font-bold text-sm">←</span>
+                        <div className="bg-white/80 backdrop-blur-sm rounded-2xl border-2 border-green-200/50 shadow-lg p-6">
+                            <div className="flex items-center gap-3 mb-4">
+                                <div className="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center">
+                                    <span className="text-white font-bold text-sm">PRE</span>
+                                </div>
+                                <span className="font-bold text-gray-700 text-lg">Prefix Expression</span>
                             </div>
-                            <span className="font-bold text-gray-700">Prefix Expression</span>
-                        </div>
                         <GenerateBar
-                            text="Evaluate"
+                                text="Evaluate"
                             onSubmit={(newVal) => {
                                 prefixExpression.current = newVal;
                                 resetToExpression(false);
@@ -489,30 +481,34 @@ stack should only have one item: answer`;
                             prefixOnRandom
                         />
                     </div>
+                    </div>
                 </div>
+            </div>
 
-                {/* Speed Slider */}
+            {/* Bottom Row: Animation Speed + Pseudocode */}
+            <div className="grid lg:grid-cols-2 gap-8">
+                {/* Animation Speed */}
                 <div className="bg-gradient-to-br from-slate-50 to-gray-50 rounded-2xl border-2 border-gray-200 shadow-lg p-6">
                     <div className="flex items-center gap-3 mb-4">
-                        <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center">
-                            <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center">
+                            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
                             </svg>
                         </div>
-                        <span className="font-bold text-gray-700 text-lg">Animation Speed</span>
+                        <span className="font-bold text-gray-700 text-xl">Animation Speed</span>
                     </div>
-                    <Slider
-                        onChange={(speed) => {
-                            waitTime.current = 0.25 / speed;
-                        }}
+                        <Slider
+                            onChange={(speed) => {
+                                waitTime.current = 0.25 / speed;
+                            }}
                     />
                 </div>
 
                 {/* Pseudocode Display */}
                 <div className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl shadow-2xl overflow-hidden">
                     <div className="bg-gradient-to-r from-slate-800 to-slate-700 px-6 py-4 border-b border-slate-600">
-                        <h3 className="font-black text-white text-lg flex items-center gap-3">
-                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <h3 className="font-black text-white text-xl flex items-center gap-3">
+                            <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                             </svg>
                             {activeMode === 'postfix' ? 'Postfix' : 'Prefix'} Pseudocode

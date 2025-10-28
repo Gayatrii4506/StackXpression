@@ -6,8 +6,8 @@ const Navbar: React.FC = () => {
 
     const navItems = [
         { href: "/", label: "Home", icon: "🏠" },
-        { href: "/tree", label: "Tree Services", icon: "🌳" },
-        { href: "/stack", label: "Stack Solutions", icon: "📚" }
+        { href: "/tree", label: "Tree", icon: "🌳" },
+        { href: "/stack", label: "Stack", icon: "📚" }
     ];
 
     return (

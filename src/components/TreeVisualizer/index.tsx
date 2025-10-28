@@ -163,7 +163,7 @@ const TreeVisualizer: React.FC<TreeVisualizerProps> = ({ initialExpression }) =>
     };
     
     traverse(treeData, type);
-    setTraversalResult(result.join(' → '));
+    setTraversalResult(result.join(' to '));
   };
 
   const handleSpeedChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -311,7 +311,7 @@ const TreeVisualizer: React.FC<TreeVisualizerProps> = ({ initialExpression }) =>
         <div className="mt-4">
           <div className="flex items-center justify-between mb-1">
             <span className="text-sm font-medium text-gray-700">Animation Speed</span>
-            <span className="text-xs text-gray-500">Slow → Fast</span>
+            <span className="text-xs text-gray-500">Slow to Fast</span>
           </div>
           <input
             type="range"
