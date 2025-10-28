@@ -164,7 +164,14 @@ const TreeVisualizer: React.FC<Props> = (props) => {
     ) => {
         if (root.raw?.attributes === undefined) return;
         if (mySimCount !== simCount.current) return;
-        root.raw.attributes.highlight = color;
+        // Map colors to green theme
+        const colorMap = {
+            "green": "#16a34a",      // green-600
+            "light-green": "#86efac", // green-300
+            "gray": "#9ca3af",       // gray-400
+            "white": "#ffffff"
+        };
+        root.raw.attributes.highlight = colorMap[color] || color;
         if (color != "gray") renderTreeWithRoot(myRoot.current);
     };
     const preorder = async ({ root, mySimCount }: TraversalParams) => {
@@ -323,24 +330,32 @@ const TreeVisualizer: React.FC<Props> = (props) => {
                     </div>
                 </TextPanel>
             </div>
-            <div className="m-auto my-4 w-full md:w-vis-container h-fit p-6 rounded-2xl bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-sm border border-slate-700/50 shadow-2xl shrink-0 md:mt-0 md:ml-0 md:mr-4">
+            {/* Enhanced Visualizer Container - modernized card with preserved green theme */}
+            <div className="m-auto my-4 w-full md:w-vis-container h-fit p-6 sm:p-7 md:p-8 rounded-2xl bg-white border border-gray-200 shadow-xl hover:shadow-2xl transition-all duration-300 shrink-0 md:mt-0 md:ml-0 md:mr-4">
                 <div className="m-auto md:w-vis">
-                    <div className="text-center text-xl font-bold mb-2 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                        Expression Tree Visualizer
+                    {/* Header - improved typography */}
+                    <div className="text-center mb-4">
+                        <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">
+                            Expression Tree Visualizer
+                        </h3>
+                        {/* Removed zoom/pan hint - now fixed/static as requested */}
+                        <p className="text-sm text-gray-500">
+                            Static visualization - preserved green color scheme
+                        </p>
                     </div>
-                    <div className="text-center text-sm text-slate-400 mb-4">
-                        <em>
-                            Interactive! Scroll to zoom, drag to pan
-                        </em>
-                    </div>
-                    <div className={`bg-gradient-to-br from-slate-100 to-slate-200 h-[350px] rounded-xl border border-slate-300 shadow-inner`}>
+                    
+                    {/* Tree Container - fixed/static, no zoom/pan as requested */}
+                    <div className={`bg-gradient-to-br from-green-50 to-emerald-50 h-[350px] sm:h-[400px] rounded-xl border-2 border-green-200 shadow-inner overflow-hidden`}>
                         <NoSSRWrapper>
                             <Tree
                                 data={treeData}
                                 pathFunc="straight"
-                                zoomable
+                                /* DISABLED: zoom/pan functionality as requested - now fixed/static */
+                                zoomable={false}
+                                draggable={false}
                                 orientation="vertical"
                                 collapsible={false}
+                                /* Fixed zoom level - stays contained in container */
                                 zoom={0.7}
                                 translate={{ x: 250 / 2, y: 20 }}
                                 renderCustomNodeElement={nodeRenderer}
@@ -348,8 +363,12 @@ const TreeVisualizer: React.FC<Props> = (props) => {
                             />
                         </NoSSRWrapper>
                     </div>
+                    
+                    {/* Result display - preserved functionality */}
                     <ResultList result={resultRef.current} />
-                    <div className="flex justify-center my-3">
+                    
+                    {/* Input bar - enhanced with modern styling */}
+                    <div className="flex justify-center my-4">
                         <GenerateBar
                             text="Tree Data (postorder, space-separated)"
                             onSubmit={(newVal) => {
@@ -359,29 +378,39 @@ const TreeVisualizer: React.FC<Props> = (props) => {
                             initialInput={expression.current}
                         />
                     </div>
-                    <div className="text-center w-full mb-3">
-                        <h3 className="text-lg font-semibold text-slate-300 mb-3">Run Visualizer</h3>
+                    
+                    {/* Traversal buttons - enhanced layout and styling */}
+                    <div className="text-center w-full mb-4">
+                        <h3 className="text-base sm:text-lg font-semibold text-gray-700 mb-3">Run Visualizer</h3>
                         <div className="flex justify-center gap-2 flex-wrap">
                             <Button
                                 onClick={() => onTraversalButtonClick(preorder)}
+                                size="md"
                             >
                                 Preorder
                             </Button>
-                            <Button onClick={() => onTraversalButtonClick(inorder)}>
+                            <Button 
+                                onClick={() => onTraversalButtonClick(inorder)}
+                                size="md"
+                            >
                                 Inorder
                             </Button>
                             <Button
                                 onClick={() => onTraversalButtonClick(postorder)}
+                                size="md"
                             >
                                 Postorder
                             </Button>
                         </div>
                     </div>
+                    
+                    {/* Speed slider - enhanced with light variant */}
                     <div className="flex justify-center mb-6">
                         <Slider
                             onChange={(speed) => {
                                 waitTime.current = 0.25 / speed;
                             }}
+                            variant="light"
                         />
                     </div>
                 </div>
